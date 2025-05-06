@@ -35,8 +35,9 @@ def main():
     current_game_state = None
     #print( current_game_state.is_round_over )
     bot=Bot()
-    while (current_game_state is None) or (not current_game_state.is_round_over):
-
+    # while (current_game_state is None) or (not current_game_state.is_round_over):
+    # The above line works for 1 round
+    while True: # For Infinite Rounds Execution
         current_game_state = receive(client_socket)
         bot_command = bot.fight(current_game_state,sys.argv[1])
         send(client_socket, bot_command)
