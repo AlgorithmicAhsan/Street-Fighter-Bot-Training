@@ -111,7 +111,7 @@ def get_manual_command():
     command.player_buttons.right = keyboard.is_pressed('d')
     command.player_buttons.A = keyboard.is_pressed('j')  # Use 'j' for A button
     command.player_buttons.B = keyboard.is_pressed('k')  # Use 'k' for B button
-    command.player_buttons.X = keyboard.is_pressed('l')  # Use 'l' for X button
+    command.player_buttons.X = keyboard.is_pressed('u')  # Use 'l' for X button
     command.player_buttons.Y = keyboard.is_pressed('i')  # Use 'i' for Y button
     command.player_buttons.L = keyboard.is_pressed('n')  # Use 'n' for L button
     command.player_buttons.R = keyboard.is_pressed('m')  # Use 'm' for R button
@@ -127,7 +127,8 @@ def main():
     frame_counter = 0
     while True:
         current_game_state = receive(client_socket)
-        log_game_state_to_pandas(current_game_state, frame_counter)
+        if current_game_state.is_round_over == False:    
+            log_game_state_to_pandas(current_game_state, frame_counter)
         manual_command = get_manual_command()
         send(client_socket, manual_command)  # Send Player 1's manual command
         frame_counter += 1
