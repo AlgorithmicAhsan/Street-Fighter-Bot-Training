@@ -1,1 +1,13 @@
-Final_Dataset.csv
+# One-time setup
+git lfs install
+
+# Track large files
+git lfs track "*.csv"
+
+# Add .gitattributes that Git LFS creates
+git add .gitattributes
+
+# Then add and commit your large file
+git add PythonAPI/Dataset/Final_Dataset.csv
+git commit -m "Track dataset with Git LFS"
+git push origin main
